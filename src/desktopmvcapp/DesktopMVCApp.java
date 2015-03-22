@@ -6,6 +6,8 @@
 
 package desktopmvcapp;
 
+import controllers.PersonaController;
+
 /**
  *
  * @author Adiel
@@ -17,6 +19,9 @@ public class DesktopMVCApp {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        PersonaController personaController = new PersonaController();
+        personaController.MostrarCRUD();
+        
     }
     
 }
