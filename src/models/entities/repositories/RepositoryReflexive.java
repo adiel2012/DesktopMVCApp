@@ -6,6 +6,7 @@
 package models.entities.repositories;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
@@ -31,6 +32,8 @@ public class RepositoryReflexive<T> {
             field.setAccessible(true);
             field.set(p, rnd.nextInt());
             field.setAccessible(false);
+
+            System.out.println(preparesql(p));
 
             data.add(p);
             return 1;
@@ -92,6 +95,42 @@ public class RepositoryReflexive<T> {
 //            return 1;
 //        }
         return -1;
+    }
+
+    private String preparesql(T p) {
+        Field[] fields = p.getClass().getDeclaredFields();
+        String res = "insert into " + p.getClass().getSimpleName() + "  ";
+
+        String campos = "";
+        String valores = "";
+        int contador = 0;
+        for (Field field : fields) {
+            if (!field.getName().equals("id")) {
+                try {
+                    if (contador != 0) {
+                        campos += ",";
+                        valores += ",";
+                    }
+                    
+                    boolean accesible = field.isAccessible();
+                    field.setAccessible(true);
+                    campos += field.getName();
+                    valores += "'"+field.get(p)+"'";
+                    field.setAccessible(accesible);
+                    
+                    contador++;
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(RepositoryReflexive.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(RepositoryReflexive.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        res += "(" + campos + ") values (" + valores + ");";
+
+        return res;
+
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
