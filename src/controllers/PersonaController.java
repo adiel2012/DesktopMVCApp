@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import models.entities.PersonaModel;
 import models.entities.repositories.PersonaRepository;
+import models.entities.repositories.RepositoryReflexive;
 import views.PersonaAdicionarFrame;
 import views.PersonaCRUDFrame;
 
@@ -21,7 +22,10 @@ import views.PersonaCRUDFrame;
  */
 public class PersonaController {
 
-    PersonaRepository repo = new PersonaRepository();
+//    PersonaRepository repo =   new PersonaRepository();
+    
+    
+    RepositoryReflexive<PersonaModel> repo =   new RepositoryReflexive<PersonaModel>();
 
     public PersonaController() {
         mediate();
