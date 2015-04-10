@@ -14,9 +14,16 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import models.entities.PersonaModel;
+//<<<<<<< HEAD
 import models.entities.repositories.IPersonaRepository;
 //import views.PersonaAdicionarFrame;
 
+//=======
+//import models.entities.repositories.PersonaRepository;
+//import models.entities.repositories.RepositoryReflexive;
+//import views.PersonaAdicionarFrame;
+//import views.PersonaCRUDFrame;
+//>>>>>>> 7549033840ac9a835f6632e9ba6bb84fa0914b54
 
 /**
  *
@@ -24,10 +31,18 @@ import models.entities.repositories.IPersonaRepository;
  */
 public class PersonaController {
 
+//<<<<<<< HEAD
     IPersonaRepository repo = (IPersonaRepository) DependencyResolver.getInstance().provide(IPersonaRepository.class) ;  // new PersonaRepository();
     IPrincipalViewPersona mainframe =  (IPrincipalViewPersona) DependencyResolver.getInstance().provide(IPrincipalViewPersona.class) ; 
     final IAdicionarPersonaFrame forma = (IAdicionarPersonaFrame) DependencyResolver.getInstance().provide(IAdicionarPersonaFrame.class) ;
     
+//=======
+////    PersonaRepository repo =   new PersonaRepository();
+//    
+//    
+//    RepositoryReflexive<PersonaModel> repo =   new RepositoryReflexive<PersonaModel>();
+//
+//>>>>>>> 7549033840ac9a835f6632e9ba6bb84fa0914b54
     public PersonaController() {
         mediate();
     }
