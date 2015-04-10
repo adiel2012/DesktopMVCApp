@@ -5,15 +5,18 @@
  */
 package controllers;
 
+import DependecyInjection.DependencyResolver;
+import controller_view.persona.IAdicionarPersonaFrame;
+import controller_view.persona.IPrincipalViewPersona;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import models.entities.PersonaModel;
-import models.entities.repositories.PersonaRepository;
-import views.PersonaAdicionarFrame;
-import views.PersonaCRUDFrame;
+import models.entities.repositories.IPersonaRepository;
+//import views.PersonaAdicionarFrame;
+
 
 /**
  *
@@ -21,18 +24,20 @@ import views.PersonaCRUDFrame;
  */
 public class PersonaController {
 
-    PersonaRepository repo = new PersonaRepository();
-
+    IPersonaRepository repo = (IPersonaRepository) DependencyResolver.getInstance().provide(IPersonaRepository.class) ;  // new PersonaRepository();
+    IPrincipalViewPersona mainframe =  (IPrincipalViewPersona) DependencyResolver.getInstance().provide(IPrincipalViewPersona.class) ; 
+    final IAdicionarPersonaFrame forma = (IAdicionarPersonaFrame) DependencyResolver.getInstance().provide(IAdicionarPersonaFrame.class) ;
+    
     public PersonaController() {
         mediate();
     }
 
     public void MostrarCRUD() {
-        PersonaCRUDFrame.getInstance().mostrar();
+        mainframe.mostrar();
     }
 
     public void MostrarFormularioInsercion() {
-       PersonaAdicionarFrame.getInstance().mostrar();
+       forma.mostrar();
     }
 
     public void iniciarFormularioEdicion(int aid) {
@@ -49,7 +54,7 @@ public class PersonaController {
 
     private void mediate() {
 
-        final PersonaAdicionarFrame forma = PersonaAdicionarFrame.getInstance();
+        
         final PersonaController controller = this;
 
         //adicionando mediación a la adición
@@ -71,12 +76,12 @@ public class PersonaController {
                 }
                 if (Adicionar(new PersonaModel(forma.getNombre(), edad)) == 1) {
                     JOptionPane.showMessageDialog(null, "Persona Adicionada Correctamente", "Correcto", 1);
-                    PersonaCRUDFrame.getInstance().getTabla().setModel(CrearModelo());
+                    mainframe.getTabla().setModel(CrearModelo());
                 }
             }
 
         });
-        PersonaCRUDFrame.getInstance().getBtnAdicionar().addActionListener(new ActionListener() {
+        mainframe.getBtnAdicionar().addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {

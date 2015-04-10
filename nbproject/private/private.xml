@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/desktopmvcapp/DesktopMVCApp.java</file>
             <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/controllers/PersonaController.java</file>
-            <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/views/PersonaCRUDFrame.java</file>
+            <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/DependecyInjection/DependencyResolver.java</file>
             <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/models/entities/repositories/PersonaRepository.java</file>
+            <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/controller_view/persona/IAdicionarPersonaFrame.java</file>
+            <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/models/entities/repositories/IPersonaRepository.java</file>
             <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/views/PersonaAdicionarFrame.java</file>
-            <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/views/PersonaEditarFrame.java</file>
         </group>
     </open-files>
 </project-private>

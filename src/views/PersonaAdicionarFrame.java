@@ -5,11 +5,13 @@
  */
 package views;
 
+import controller_view.persona.IAdicionarPersonaFrame;
+
 /**
  *
  * @author Adiel
  */
-public class PersonaAdicionarFrame extends javax.swing.JFrame {
+public class PersonaAdicionarFrame extends javax.swing.JFrame implements IAdicionarPersonaFrame {
 
     private static PersonaAdicionarFrame instance = null;
 
@@ -21,15 +23,18 @@ public class PersonaAdicionarFrame extends javax.swing.JFrame {
         //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
     public String getEdad(){
          return jTextField2.getText();
     }
     
+    @Override
     public String getNombre(){
          return jTextField1.getText();
     }
     
 
+    @Override
     public void mostrar() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -169,6 +174,7 @@ public class PersonaAdicionarFrame extends javax.swing.JFrame {
     /**
      * @return the BtnAdicionar
      */
+    @Override
     public javax.swing.JButton getBtnAdicionar() {
         return BtnAdicionar;
     }

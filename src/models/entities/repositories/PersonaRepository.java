@@ -14,12 +14,13 @@ import models.entities.PersonaModel;
  *
  * @author Adiel
  */
-public class PersonaRepository {
+public class PersonaRepository implements IPersonaRepository {
     
     ArrayList<PersonaModel> data = new ArrayList<PersonaModel>();
     
     Random rnd = new Random();
     
+    @Override
     public int AdicionarPersona(PersonaModel p){
         System.out.println("Adicionando persona: "+p);
         p.setId(rnd.nextInt());
@@ -27,11 +28,13 @@ public class PersonaRepository {
         return 1;
     }
     
+    @Override
     public PersonaModel[] getListadoPersona(){
         System.out.println("Obteniendo Listado");
         return data.toArray(new PersonaModel[]{});
     }
     
+    @Override
     public PersonaModel getPersonaPorId(int aid){
         System.out.println("Obteniendo persona"+aid);
         for (PersonaModel personaModel : data) {
@@ -41,6 +44,7 @@ public class PersonaRepository {
         return null;
     }
     
+    @Override
     public int EditarPersona(int aid,PersonaModel p){
         System.out.println("Adicionando persona: "+p);
         int indice=0;
@@ -55,6 +59,7 @@ public class PersonaRepository {
         return -1;
     }
     
+    @Override
     public int EliminarPersonaPorId(int aid){
         System.out.println("Obteniendo persona"+aid);
         

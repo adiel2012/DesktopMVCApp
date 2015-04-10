@@ -6,11 +6,13 @@
 
 package views;
 
+import controller_view.persona.IPrincipalViewPersona;
+
 /**
  *
  * @author Adiel
  */
-public class PersonaCRUDFrame extends javax.swing.JFrame {
+public class PersonaCRUDFrame extends javax.swing.JFrame implements IPrincipalViewPersona {
 
     private static PersonaCRUDFrame instance= null;
     
@@ -154,6 +156,7 @@ public class PersonaCRUDFrame extends javax.swing.JFrame {
     /**
      * @return the BtnAdicionar
      */
+    @Override
     public javax.swing.JButton getBtnAdicionar() {
         return BtnAdicionar;
     }
@@ -161,6 +164,7 @@ public class PersonaCRUDFrame extends javax.swing.JFrame {
     /**
      * @return the BtnEditar
      */
+    @Override
     public javax.swing.JButton getBtnEditar() {
         return BtnEditar;
     }
@@ -168,6 +172,7 @@ public class PersonaCRUDFrame extends javax.swing.JFrame {
     /**
      * @return the BtnEliminar
      */
+    @Override
     public javax.swing.JButton getBtnEliminar() {
         return BtnEliminar;
     }
@@ -175,10 +180,12 @@ public class PersonaCRUDFrame extends javax.swing.JFrame {
     /**
      * @return the Tabla
      */
+    @Override
     public javax.swing.JTable getTabla() {
         return Tabla;
     }
 
+    @Override
     public void mostrar() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
