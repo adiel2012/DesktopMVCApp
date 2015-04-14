@@ -6,13 +6,32 @@
 
 package models.entities;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author Adiel
  */
+@Entity
+@Table(name = "Tb_persona")
 public class PersonaModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
     private int id;
+    
+    @Basic(optional = false)
+    @Column(name = "person_name")
     private String nombre;
+    @Basic(optional = false)
+    @Column(name = "person_age")
     private int edad;
 
     public PersonaModel() {
