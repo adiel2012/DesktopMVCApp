@@ -5,9 +5,12 @@
         <group>
             <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/controllers/PersonaController.java</file>
             <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/DependecyInjection/DependencyResolver.java</file>
+            <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/models/entities/PersonaModel.java</file>
             <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/models/entities/repositories/PersonaRepository.java</file>
             <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/controller_view/persona/IAdicionarPersonaFrame.java</file>
             <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/models/entities/repositories/IPersonaRepository.java</file>
+            <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/models/entities/Products.java</file>
+            <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/reflectionsample/sample.java</file>
             <file>file:/D:/Adiel/OneDrive/PatronesdeDiseño/DesktopMVCApp/src/views/PersonaAdicionarFrame.java</file>
         </group>
     </open-files>

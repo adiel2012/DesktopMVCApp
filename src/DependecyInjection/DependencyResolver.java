@@ -7,6 +7,8 @@ package DependecyInjection;
 
 import controller_view.persona.IAdicionarPersonaFrame;
 import controller_view.persona.IPrincipalViewPersona;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Dictionary;
@@ -82,5 +84,46 @@ public class DependencyResolver {
 
         return null;
     }
+    
+    
+    
+    
+    public void InyectDependencies(Object obj ){
+        Class tipo = obj.getClass();
+//        System.out.println("Anotaciones de la clase " + tipo.getName());
+        Annotation[] anotaciones = tipo.getAnnotations();
+//        for (Annotation annotation : anotaciones) {
+//            System.out.println("    " + annotation.annotationType().getName());
+//        }
+
+//         Field field = p.getClass().getDeclaredField("id");
+//            field.setAccessible(true);
+//            field.set(p, rnd.nextInt());
+//            field.setAccessible(false);
+
+        System.out.println("Campos de la clase " + tipo.getName());
+        Field[] fields = tipo.getDeclaredFields();
+        for (Field field : fields) {
+            //System.out.println("    " + field.getName());
+            anotaciones = field.getDeclaredAnnotations();
+            for (Annotation annotation : anotaciones) {
+                //System.out.println("        " + annotation.annotationType().getName());
+                if(annotation.annotationType().equals(MyInject.class)){
+                    try {
+                        //System.out.println("               Es llave");
+                        boolean access = field.isAccessible();
+                        field.setAccessible(true);
+                        field.set(obj, this.provide(field.getType()));
+                        field.setAccessible(access);
+                    } catch (IllegalArgumentException | IllegalAccessException ex) {
+                        Logger.getLogger(DependencyResolver.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
+    }
+
+
+    
 
 }

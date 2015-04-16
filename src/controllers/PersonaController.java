@@ -6,6 +6,7 @@
 package controllers;
 
 import DependecyInjection.DependencyResolver;
+import DependecyInjection.MyInject;
 import controller_view.persona.IAdicionarPersonaFrame;
 import controller_view.persona.IPrincipalViewPersona;
 import java.awt.event.ActionEvent;
@@ -32,9 +33,12 @@ import models.entities.repositories.IPersonaRepository;
 public class PersonaController {
 
 //<<<<<<< HEAD
-    IPersonaRepository repo = (IPersonaRepository) DependencyResolver.getInstance().provide(IPersonaRepository.class) ;  // new PersonaRepository();
-    IPrincipalViewPersona mainframe =  (IPrincipalViewPersona) DependencyResolver.getInstance().provide(IPrincipalViewPersona.class) ; 
-    final IAdicionarPersonaFrame forma = (IAdicionarPersonaFrame) DependencyResolver.getInstance().provide(IAdicionarPersonaFrame.class) ;
+    @MyInject
+    IPersonaRepository repo = null;// (IPersonaRepository) DependencyResolver.getInstance().provide(IPersonaRepository.class) ;  // new PersonaRepository();
+    @MyInject
+    IPrincipalViewPersona mainframe = null;//  (IPrincipalViewPersona) DependencyResolver.getInstance().provide(IPrincipalViewPersona.class) ; 
+    @MyInject
+    IAdicionarPersonaFrame forma = null;// (IAdicionarPersonaFrame) DependencyResolver.getInstance().provide(IAdicionarPersonaFrame.class) ;
     
 //=======
 ////    PersonaRepository repo =   new PersonaRepository();
@@ -44,6 +48,7 @@ public class PersonaController {
 //
 //>>>>>>> 7549033840ac9a835f6632e9ba6bb84fa0914b54
     public PersonaController() {
+        DependencyResolver.getInstance().InyectDependencies(this);
         mediate();
     }
 

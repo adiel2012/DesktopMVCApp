@@ -6,6 +6,7 @@
 
 package desktopmvcapp;
 
+import DependecyInjection.DependencyResolver;
 import controllers.PersonaController;
 
 /**
@@ -20,6 +21,7 @@ public class DesktopMVCApp {
     public static void main(String[] args) {
         // TODO code application logic here
         PersonaController personaController = new PersonaController();
+        
         personaController.MostrarCRUD();
         
     }
