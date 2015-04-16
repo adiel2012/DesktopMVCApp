@@ -55,7 +55,7 @@ public class DependencyResolver {
             Method method;
             try {
 
-               // PersonaAdicionarFrame.class.getMethod("getInstance");
+                // PersonaAdicionarFrame.class.getMethod("getInstance");
                 method = mapasingleton.get(c).getMethod("getInstance");
                 return method.invoke(null);
             } catch (NoSuchMethodException ex) {
@@ -72,8 +72,6 @@ public class DependencyResolver {
 
         }
 
-        
-
         try {
             if (mapa.containsKey(c)) {
                 return mapa.get(c).newInstance();
@@ -84,11 +82,8 @@ public class DependencyResolver {
 
         return null;
     }
-    
-    
-    
-    
-    public void InyectDependencies(Object obj ){
+
+    public void InyectDependencies(Object obj) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
         Class tipo = obj.getClass();
 //        System.out.println("Anotaciones de la clase " + tipo.getName());
         Annotation[] anotaciones = tipo.getAnnotations();
@@ -100,7 +95,6 @@ public class DependencyResolver {
 //            field.setAccessible(true);
 //            field.set(p, rnd.nextInt());
 //            field.setAccessible(false);
-
         System.out.println("Campos de la clase " + tipo.getName());
         Field[] fields = tipo.getDeclaredFields();
         for (Field field : fields) {
@@ -108,22 +102,34 @@ public class DependencyResolver {
             anotaciones = field.getDeclaredAnnotations();
             for (Annotation annotation : anotaciones) {
                 //System.out.println("        " + annotation.annotationType().getName());
-                if(annotation.annotationType().equals(MyInject.class)){
-                    try {
-                        //System.out.println("               Es llave");
-                        boolean access = field.isAccessible();
-                        field.setAccessible(true);
-                        field.set(obj, this.provide(field.getType()));
-                        field.setAccessible(access);
-                    } catch (IllegalArgumentException | IllegalAccessException ex) {
-                        Logger.getLogger(DependencyResolver.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                if (annotation.annotationType().equals(MyInject.class)) {
+
+                    //System.out.println("               Es llave");
+                    boolean access = field.isAccessible();
+                    field.setAccessible(true);
+                    field.set(obj, this.provide(field.getType()));
+                    field.setAccessible(access);
+
                 }
             }
         }
+
+        //  System.out.println("Metodos de la clase " + tipo.getName());
+        Method[] metodos = tipo.getDeclaredMethods();
+        for (Method method : metodos) {
+            System.out.println("    " + method.getName());
+            anotaciones = method.getDeclaredAnnotations();
+            for (Annotation annotation : anotaciones) {
+                if (annotation.annotationType().equals(MyAfterInject.class)) {
+                    boolean access = method.isAccessible();
+                    method.setAccessible(true);
+                    method.invoke(obj);
+                    method.setAccessible(access);
+                    break;
+                }
+            }
+        }
+
     }
-
-
-    
 
 }

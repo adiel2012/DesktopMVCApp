@@ -15,7 +15,8 @@ import java.lang.annotation.Target;
  *
  * @author Adiel
  */
-@Target(value = { ElementType.FIELD})
+@Target(value = { ElementType.METHOD})
 @Retention(value = RetentionPolicy.RUNTIME)
-public @interface MyInject {  
+public @interface MyAfterInject {
+    
 }

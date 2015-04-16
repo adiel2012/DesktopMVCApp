@@ -6,6 +6,7 @@
 package controllers;
 
 import DependecyInjection.DependencyResolver;
+import DependecyInjection.MyAfterInject;
 import DependecyInjection.MyInject;
 import controller_view.persona.IAdicionarPersonaFrame;
 import controller_view.persona.IPrincipalViewPersona;
@@ -15,16 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import models.entities.PersonaModel;
-//<<<<<<< HEAD
-import models.entities.repositories.IPersonaRepository;
-//import views.PersonaAdicionarFrame;
 
-//=======
-//import models.entities.repositories.PersonaRepository;
-//import models.entities.repositories.RepositoryReflexive;
-//import views.PersonaAdicionarFrame;
-//import views.PersonaCRUDFrame;
-//>>>>>>> 7549033840ac9a835f6632e9ba6bb84fa0914b54
+import models.entities.repositories.IPersonaRepository;
 
 /**
  *
@@ -34,22 +27,16 @@ public class PersonaController {
 
 //<<<<<<< HEAD
     @MyInject
-    IPersonaRepository repo = null;// (IPersonaRepository) DependencyResolver.getInstance().provide(IPersonaRepository.class) ;  // new PersonaRepository();
+    IPersonaRepository repo = null;
     @MyInject
-    IPrincipalViewPersona mainframe = null;//  (IPrincipalViewPersona) DependencyResolver.getInstance().provide(IPrincipalViewPersona.class) ; 
+    IPrincipalViewPersona mainframe = null;
     @MyInject
-    IAdicionarPersonaFrame forma = null;// (IAdicionarPersonaFrame) DependencyResolver.getInstance().provide(IAdicionarPersonaFrame.class) ;
+    IAdicionarPersonaFrame forma = null;
     
-//=======
-////    PersonaRepository repo =   new PersonaRepository();
-//    
-//    
-//    RepositoryReflexive<PersonaModel> repo =   new RepositoryReflexive<PersonaModel>();
-//
-//>>>>>>> 7549033840ac9a835f6632e9ba6bb84fa0914b54
+
     public PersonaController() {
-        DependencyResolver.getInstance().InyectDependencies(this);
-        mediate();
+        //DependencyResolver.getInstance().InyectDependencies(this);
+        //mediate();
     }
 
     public void MostrarCRUD() {
@@ -72,6 +59,7 @@ public class PersonaController {
         return repo.AdicionarPersona(p);
     }
 
+    @MyAfterInject
     private void mediate() {
 
         

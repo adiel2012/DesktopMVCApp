@@ -8,6 +8,9 @@ package desktopmvcapp;
 
 import DependecyInjection.DependencyResolver;
 import controllers.PersonaController;
+import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,10 +22,14 @@ public class DesktopMVCApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        PersonaController personaController = new PersonaController();
-        
-        personaController.MostrarCRUD();
+        try {
+            // TODO code application logic here
+            PersonaController personaController = new PersonaController();
+            DependencyResolver.getInstance().InyectDependencies(personaController);
+            personaController.MostrarCRUD();
+        } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException ex) {
+            Logger.getLogger(DesktopMVCApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
